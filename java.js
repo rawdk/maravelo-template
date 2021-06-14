@@ -1,6 +1,36 @@
 /*Her i toppen, er der 'send' knappen, som skal få alt JavaScripten til at fungere */
 var btn = document.querySelector(".send");
-btn.addEventListener("click", send)
+btn.addEventListener("click", send);
+
+//Henvendelsesvalg, de tre radiobuttons som der skal trykkes på for at vælge et bestemt emne man skriver om
+var ditValg = [
+    { //første plads i Arrayet - plads 0
+    q:"Vælg herunder hvad du henvender dig omkring",
+    a:["Split-Leasing", "Hent tilbud", "Andet"],
+    },
+];
+var count = 0; 
+
+var qElement = document.querySelector(".radiovalg"); 
+var optionsElement = document.querySelector(".valg")
+
+
+function runProgram(){
+     qElement.innerHTML = ditValg[count].q
+
+     var aElements = "<form>"
+
+     ditValg[count].a.forEach(answer => {
+         aElements += '<input type="radio" id="radio" name="answer" value="'+ answer +'"><label>'+ answer +'</label>' 
+     })
+
+ optionsElement.innerHTML = aElements 
+
+}
+
+
+runProgram();
+
 
 /* Dette sættes ind for at sikre at brugeren skriver mere end et bogstav i hver boks, så man får de nødvendige oplysninger*/
 function send (){
@@ -13,7 +43,7 @@ function send (){
         
 
     var textField = document.querySelector(".text1");
-    textField.innerHTML = "<h3>Din besked er sendt og du vil hurtigst muligt modtage et svar på den angivede mail</h3>";
+    textField.innerHTML = "<h3>Din besked er sendt og du vil hurtigst muligt modtage et svar på din mail</h3>";
 
 /* Herunder er der indsat JavaScript til at fortælle om brugeren har indtastet nok oplysninger i de forskellige felter */
     console.log(inputNavn, inputMail, inputEmne, inputDinBesked);
